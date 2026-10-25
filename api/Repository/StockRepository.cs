@@ -31,6 +31,13 @@ namespace api.Repository
             {
                 stocks = stocks.Where(s => s.Symbol != null && s.Symbol.ToLower().Contains(query.Symbol.ToLower().Trim()));
             }
+             if(!string.IsNullOrWhiteSpace(query.SortBy))
+            {
+                if(query.SortBy.Equals("Symbol", StringComparison.OrdinalIgnoreCase))
+                {
+                    stocks = query.IsDescending ? stocks.OrderByDescending(s => s.Symbol) : stocks.OrderBy(s => s.Symbol);
+                }
+            }
             return await stocks.ToListAsync();
         }
         public async Task<Stock?> GetByIdAsync(int id)
