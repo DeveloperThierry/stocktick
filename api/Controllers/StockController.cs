@@ -65,5 +65,26 @@ namespace api.Controllers
             _context.SaveChanges();
             return Ok(stockModel.ToStockDto());
         }
+
+        [HttpPatch]
+        [Route("{id}")]
+        public IActionResult PartialUpdate([FromRoute] int id, [FromBody] PartialUpdateStockRequestDto updateDto)
+        {
+            var stockModel = _context.Stocks.FirstOrDefault(x => x.Id == id);
+            if(stockModel == null)
+            {
+                return NotFound();
+            }
+            if(updateDto.Symbol != null) stockModel.Symbol = updateDto.Symbol;
+            if(updateDto.CompanyName != null) stockModel.CompanyName = updateDto.CompanyName;
+            if(updateDto.Purchase.HasValue) stockModel.Purchase = updateDto.Purchase.Value;
+            if(updateDto.LastDiv.HasValue) stockModel.LastDiv = updateDto.LastDiv.Value;
+            if(updateDto.Industry != null) stockModel.Industry = updateDto.Industry;
+            if(updateDto.MarketCap.HasValue) stockModel.MarketCap = updateDto.MarketCap.Value;
+            _context.SaveChanges();
+            return Ok(stockModel.ToStockDto());
+        }
+
+        
     }   
 }
