@@ -65,7 +65,7 @@ namespace api.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<decimal>("Purchase")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("Symbol")
                         .IsRequired()
