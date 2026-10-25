@@ -137,3 +137,16 @@
 /home/user/app/api/bin/Debug/net8.0/Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
 /home/user/app/api/bin/Debug/net8.0/Newtonsoft.Json.dll
 /home/user/app/api/bin/Debug/net8.0/Newtonsoft.Json.Bson.dll
+/home/user/app/api/bin/Debug/net8.0/Microsoft.AspNetCore.Authentication.JwtBearer.dll
+/home/user/app/api/bin/Debug/net8.0/Microsoft.AspNetCore.Cryptography.Internal.dll
+/home/user/app/api/bin/Debug/net8.0/Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+/home/user/app/api/bin/Debug/net8.0/Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+/home/user/app/api/bin/Debug/net8.0/Microsoft.Extensions.Identity.Core.dll
+/home/user/app/api/bin/Debug/net8.0/Microsoft.Extensions.Identity.Stores.dll
+/home/user/app/api/bin/Debug/net8.0/Microsoft.IdentityModel.Abstractions.dll
+/home/user/app/api/bin/Debug/net8.0/Microsoft.IdentityModel.JsonWebTokens.dll
+/home/user/app/api/bin/Debug/net8.0/Microsoft.IdentityModel.Logging.dll
+/home/user/app/api/bin/Debug/net8.0/Microsoft.IdentityModel.Protocols.dll
+/home/user/app/api/bin/Debug/net8.0/Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+/home/user/app/api/bin/Debug/net8.0/Microsoft.IdentityModel.Tokens.dll
+/home/user/app/api/bin/Debug/net8.0/System.IdentityModel.Tokens.Jwt.dll
