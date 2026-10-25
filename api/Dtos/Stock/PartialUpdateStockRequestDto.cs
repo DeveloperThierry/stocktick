@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -7,11 +8,23 @@ namespace api.Dtos.Stock
 {
     public class PartialUpdateStockRequestDto
     {
-        public string? Symbol { get; set; }
-        public string? CompanyName { get; set; }
+        [Required]
+        [MaxLength(10, ErrorMessage = "Symbol Cannot be over 10 characters")]
+         public string? Symbol { get; set; } 
+         [Required]
+        [MaxLength(10, ErrorMessage = "Company Cannot be over 10 characters")]
+        public string? CompanyName { get; set; } 
+        [Required]
+        [Range(1,10000000000)]
         public decimal? Purchase { get; set; }
+        [Required]
+        [Range(0.001,100)]
         public decimal? LastDiv { get; set; }
-        public string? Industry { get; set; }
+        [Required]
+        [MaxLength(10, ErrorMessage = "Industry Cannot be over 10 characters")]
+        public string? Industry { get; set; } 
+        [Required]
+        [Range(1,10000000000)]
         public long? MarketCap { get; set; }
     }
 }
