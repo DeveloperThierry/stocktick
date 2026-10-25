@@ -51,5 +51,31 @@ namespace api.Controllers
             if(comment == null) return NotFound();
             return Ok(comment.ToCommentDto());
         }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> Update([FromRoute] int id, [FromBody] UpdateCommentRequestDto updateDto)
+        {
+            var commentModel = updateDto.ToCommentFromUpdateDto();
+            var comment = await _commentRepo.UpdateAsync(id, commentModel);
+            if(comment == null) return NotFound();
+            return Ok(comment.ToCommentDto());
+        }
+
+        [HttpPatch("{id}")]
+        public async Task<IActionResult> PartialUpdate([FromRoute] int id, [FromBody] PartialUpdateCommentRequestDto updateDto)
+        {
+            // var commentModel = updateDto.ToCommentFromUpdateDto();
+            var comment = await _commentRepo.PartialUpdateAsync(id, updateDto);
+            if(comment == null) return NotFound();
+            return Ok(comment.ToCommentDto());
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete([FromRoute] int id)
+        {
+            var comment = await _commentRepo.DeleteAsync(id);
+            if(comment == null) return NotFound("Comment does not exist");
+            return Ok(comment.ToCommentDto());
+        }
     }
 }
