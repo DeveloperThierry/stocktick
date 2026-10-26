@@ -45,13 +45,13 @@ namespace api.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "02551f6e-2031-4e0f-b885-0cf8bfd2752d",
+                            Id = "9ad3332e-b2c2-44f2-a587-04904740624a",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "c1b69eaa-3d10-4157-99a9-a5dd6e723f58",
+                            Id = "758a4dc6-7323-4897-b8ed-b4c3e570b72d",
                             Name = "User",
                             NormalizedName = "USER"
                         });
@@ -229,6 +229,10 @@ namespace api.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
+                    b.Property<string>("AppUserId")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("Content")
                         .IsRequired()
                         .HasColumnType("TEXT");
@@ -244,6 +248,8 @@ namespace api.Migrations
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("AppUserId");
 
                     b.HasIndex("StockId");
 
@@ -350,9 +356,17 @@ namespace api.Migrations
 
             modelBuilder.Entity("api.Models.Comment", b =>
                 {
+                    b.HasOne("api.Models.AppUser", "AppUser")
+                        .WithMany()
+                        .HasForeignKey("AppUserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("api.Models.Stock", "Stock")
                         .WithMany("Comments")
                         .HasForeignKey("StockId");
+
+                    b.Navigation("AppUser");
 
                     b.Navigation("Stock");
                 });
